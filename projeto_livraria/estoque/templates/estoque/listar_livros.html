@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Livros</title>
+</head>
+<body>
+    <h1>Lista de Livros</h1>
+    <ul>
+        {% for livro in livros %}
+            <li>{{ livro.titulo }} - {{ livro.autor }} - {{livro.quantidade_em_estoque}}</li>
+            <a href="{% url 'editar_livro' livro.id %}">Editar</a>
+            <a href="{% url 'excluir_livro' livro.id %}">Excluir</a>
+        {% endfor %}
+    </ul>
+</body>
+</html>

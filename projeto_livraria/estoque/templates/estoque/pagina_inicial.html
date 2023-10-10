@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página Inicial</title>
+</head>
+<body>
+    <h1>Bem-vindo à Página Inicial</h1>
+    <p>Escolha uma ação:</p>
+    <ul>
+        <li><a href="{% url 'listar_livros' %}">Ir para Lista de Livros</a></li>
+        <li><a href="{% url 'criar_livro' %}">Ir para Cadastro de Livro</a></li>
+        <li><a href="{% url 'gerar_relatorio_estoque' %}">Gerar relatório de estoque em PDF</a></li>
+    </ul>
+</body>
+</html>
