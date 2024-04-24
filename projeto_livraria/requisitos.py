@@ -1,5 +1,14 @@
-# para execultar o venv
+#para criar o venv
+#   python -m venv --without-pip .venv 
+#   source -m venv .venv
+
+# para execultar o venv linux
 #  source .venv/bin/activate
+#
+# para executar o venv windows
+#   .venv\Scripts\activate   
+# 
+# #
 
 # para execultar o projeto
 #   python3 manage.py runserver
