@@ -1,6 +1,8 @@
 # para execultar o venv
 #  source .venv/bin/activate
-  
+
+# para execultar o projeto
+#   python3 manage.py runserver
   
 #atualixar as dependencias    
 #  pip freeze > requiments.txt 
