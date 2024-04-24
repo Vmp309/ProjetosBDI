@@ -1,3 +1,15 @@
+# para execultar o venv
+#  source .venv/bin/activate
+  
+  
+#atualixar as dependencias    
+#  pip freeze > requiments.txt 
+#instalar as dependencias
+#  pip install -r requiments.txt
+ 
+ 
+
+
 # Especificações:
 # O objetivo deste estender o sistema anterior para incorporar um módulo de vendas é projetar um
 # sistema de vendas. 
