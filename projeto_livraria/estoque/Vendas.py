@@ -23,49 +23,53 @@ class Vendas:
     def pix(self,idVenda,desconto):
         venda = Venda.objects.get(pk=idVenda)
         venda.formaPagamento="pix"
-        total = venda.valorTotal-(venda.valorTotal*desconto)
-        
-        desconto(idVenda,desconto)
+        Vendas.desconto(idVenda)
         print("pagando com o pix")
         venda.Pagconcluido=True
      
     @classmethod    
-    def cartao(self,idVenda,desconto):
+    def cartao(self,idVenda):
         venda = Venda.objects.get(pk=idVenda)
-        total = venda.valorTotal-(venda.valorTotal*desconto)
         tipo = input("Digite 1 para Credito\n Digite 2 para Debito")
         if(tipo == 1):
             venda.formaPagamento="credito"
-            desconto(idVenda,desconto)
+            Vendas.desconto(idVenda)
             print("pagando com Credito")
         elif(tipo == 2):
             venda.formaPagamento="debito"
-            desconto(idVenda,desconto)
+            Vendas.desconto(idVenda)
             print("pagando com Debito")
         venda.Pagconcluido=True
         
     @classmethod
-    def berries(self,idVenda,desconto):
+    def berries(self,idVenda):
         venda = Venda.objects.get(pk=idVenda)
-        total = venda.valorTotal-(venda.valorTotal*desconto)
         venda.formaPagamento="berries"
-        
-        desconto(idVenda,desconto)
+        Vendas.desconto(idVenda)
         print("pagando em berries")
         venda.Pagconcluido=True
         
     @classmethod
-    def boleto(self,idVenda,desconto):
+    def boleto(self,idVenda):
         venda = Venda.objects.get(pk=idVenda)
         
         venda.formaPagamento="boleto"
-        desconto(idVenda,desconto)
+        Vendas.desconto(idVenda)
         print("pagando com boleto")
         venda.Pagconcluido=True 
         
     @classmethod
-    def desconto(self, idVenda,desconto):
+    def desconto(self, idVenda):
         venda = Venda.objects.get(pk=idVenda)
+        desconto=0.00
+        cliente = Cliente.objects.get(pk=venda.Cliente)
+        if(cliente.isflamengo==True):
+            desconto+=0.05
+        if(cliente.onePiece==True):
+            desconto+=0.05
+        if (cliente.endereco == "mari"):
+            desconto+=0.05
+        
         valDesconto = venda.valorTotal-(venda.valorTotal*desconto)
         venda.valorDesconto= valDesconto
         print("total: ",venda.valorTotal)
@@ -75,23 +79,18 @@ class Vendas:
                
     @classmethod
     def pagamento(self,idCliente,idvenda ,formaPagamento):
-        desconto=0.00
-        cliente = Cliente.objects.get(pk=idCliente)
-        if(cliente.isflamengo==True):
-            desconto+=0.05
-        if(cliente.onePiece==True):
-            desconto+=0.05
-        if (cliente.endereco == "mari"):
-            desconto+=0.05
+        venda = Venda.objects.get(pk=idvenda)
+        venda.Cliente= Cliente.objects.get(pk=idCliente)
+        
         
         if(formaPagamento == 0):
-            Vendas.pix(self,idvenda,desconto)
+            Vendas.pix(self,idvenda)
         elif(formaPagamento == 1):
-            Vendas.cartao(self,idvenda,desconto)
+            Vendas.cartao(self,idvenda)
         elif(formaPagamento == 2 ):
-            Vendas.berries(self,idvenda,desconto)
+            Vendas.berries(self,idvenda)
         elif(formaPagamento == 3 ):
-            Vendas.boleto(self,idvenda,desconto)
+            Vendas.boleto(self,idvenda)
             
     def obterVenda(self,id):
         return Venda.objects.get(pk=id)       
