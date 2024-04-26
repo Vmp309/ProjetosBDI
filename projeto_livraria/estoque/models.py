@@ -27,7 +27,7 @@ class Venda(models.Model):
     formaPagamento = models.CharField(max_length=7) 
     Pagconcluido = models.BooleanField()
     Cliente = models.ManyToManyField(Cliente)
-    livros= models.ExpressionList([])
+    livros= models.ExpressionList({})
     
     def __str__(self) :
         return self.pk

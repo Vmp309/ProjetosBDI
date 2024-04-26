@@ -5,22 +5,28 @@ from .models import Livro
 class Vendas:
     
     @classmethod
-    def addIntem(self,idVenda,idLivro):
+    def addIntem(self,idVenda,idLivro,qtd):
         venda = Venda.objects.get(pk=idVenda)
         livro = Livro.objects.get(pk=idLivro)
-        venda.livros.append(idLivro)
-        venda.valorTotal+=livro.valor
+        if (livro.pk == idLivro) and (livro.quantidade_em_estoque>0) and (not(idLivro in venda.livros)):
+            qtd += venda.livros[idLivro]
+            venda.livros[idLivro]= qtd
+            venda.valorTotal+=livro.valor
+        else:
+            print("Livro indisponivel")
         
     @classmethod
     def removerIntem(self,idVenda,idLivro):
         venda = Venda.objects.get(pk=idVenda)
         livro = Livro.objects.get(pk=idLivro)
-        venda.valorTotal-=livro.valor
-        venda.livros.remove(idLivro)
-        
+        if venda.livros != None and livro.pk == idLivro and idLivro in venda.livros: 
+            venda.livros.remove(idLivro)
+            venda.valorTotal-=livro.valor
+        else:
+            print("carrinho vazio ")
         
     @classmethod
-    def pix(self,idVenda,desconto):
+    def pix(self,idVenda):
         venda = Venda.objects.get(pk=idVenda)
         venda.formaPagamento="pix"
         Vendas.desconto(idVenda)
