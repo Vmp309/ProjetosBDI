@@ -19,7 +19,10 @@
 #  pip install -r requiments.txt
  
  
+#
+# CREATE USER augusto WITH PASSWORD 'augusto';
 
+# #
 
 # Especificações:
 # O objetivo deste estender o sistema anterior para incorporar um módulo de vendas é projetar um

@@ -81,22 +81,20 @@ class Vendas:
         print("total: ",venda.valorTotal)
         if venda.valorDesconto < venda.valorTotal :
             print("total com desconto: " , venda.valorDesconto)
-        
-               
+             
     @classmethod
     def pagamento(self,idCliente,idvenda ,formaPagamento):
         venda = Venda.objects.get(pk=idvenda)
         venda.Cliente= Cliente.objects.get(pk=idCliente)
-        
-        
-        if(formaPagamento == 0):
-            Vendas.pix(self,idvenda)
-        elif(formaPagamento == 1):
-            Vendas.cartao(self,idvenda)
-        elif(formaPagamento == 2 ):
-            Vendas.berries(self,idvenda)
-        elif(formaPagamento == 3 ):
-            Vendas.boleto(self,idvenda)
+        if venda.livros != None:
+            if(formaPagamento == 0):
+                Vendas.pix(self,idvenda)
+            elif(formaPagamento == 1):
+                Vendas.cartao(self,idvenda)
+            elif(formaPagamento == 2 ):
+                Vendas.berries(self,idvenda)
+            elif(formaPagamento == 3 ):
+                Vendas.boleto(self,idvenda)
             
     def obterVenda(self,id):
         return Venda.objects.get(pk=id)       
