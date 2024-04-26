@@ -23,10 +23,11 @@ class Cliente(models.Model):
     
 class Venda(models.Model):
     valorTotal = models.PositiveIntegerField()
+    valorDesconto = models.PositiveIntegerField() 
     formaPagamento = models.CharField(max_length=7) 
     Pagconcluido = models.BooleanField()
     Cliente = models.ManyToManyField(Cliente)
-    livros= models.aggregates()
+    livros= models.ExpressionList([])
     
     def __str__(self) :
         return self.pk

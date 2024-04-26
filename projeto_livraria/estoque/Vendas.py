@@ -25,11 +25,8 @@ class Vendas:
         venda.formaPagamento="pix"
         total = venda.valorTotal-(venda.valorTotal*desconto)
         
+        desconto(idVenda,desconto)
         print("pagando com o pix")
-        print("total: ",venda.valorTotal)
-        if total>0 :
-            print("total com desconto: " , total)
-        
         venda.Pagconcluido=True
      
     @classmethod    
@@ -39,16 +36,12 @@ class Vendas:
         tipo = input("Digite 1 para Credito\n Digite 2 para Debito")
         if(tipo == 1):
             venda.formaPagamento="credito"
+            desconto(idVenda,desconto)
             print("pagando com Credito")
-            print("total: ",venda.valorTotal)
-            if total>0 :
-                print("total com desconto: " , total)
         elif(tipo == 2):
             venda.formaPagamento="debito"
+            desconto(idVenda,desconto)
             print("pagando com Debito")
-            print("total: ",venda.valorTotal)
-            if total>0 :
-                print("total com desconto: " , total)
         venda.Pagconcluido=True
         
     @classmethod
@@ -56,22 +49,29 @@ class Vendas:
         venda = Venda.objects.get(pk=idVenda)
         total = venda.valorTotal-(venda.valorTotal*desconto)
         venda.formaPagamento="berries"
+        
+        desconto(idVenda,desconto)
         print("pagando em berries")
-        print("total: ",venda.valorTotal)
-        if total>0 :
-            print("total com desconto: " , total)
         venda.Pagconcluido=True
         
     @classmethod
     def boleto(self,idVenda,desconto):
         venda = Venda.objects.get(pk=idVenda)
-        total = venda.valorTotal-(venda.valorTotal*desconto)
+        
         venda.formaPagamento="boleto"
+        desconto(idVenda,desconto)
         print("pagando com boleto")
-        print("total: ",venda.valorTotal)
-        if total>0 :
-            print("total com desconto: " , total)
         venda.Pagconcluido=True 
+        
+    @classmethod
+    def desconto(self, idVenda,desconto):
+        venda = Venda.objects.get(pk=idVenda)
+        valDesconto = venda.valorTotal-(venda.valorTotal*desconto)
+        venda.valorDesconto= valDesconto
+        print("total: ",venda.valorTotal)
+        if venda.valorDesconto < venda.valorTotal :
+            print("total com desconto: " , venda.valorDesconto)
+        
                
     @classmethod
     def pagamento(self,idCliente,idvenda ,formaPagamento):
