@@ -86,6 +86,7 @@ DATABASES = {
         'HOST': 'localhost',      # Host onde o PostgreSQL está em execução (geralmente, localhost)
         'PORT': '5432',           # Porta padrão do PostgreSQL
     }
+    
 }
 
 

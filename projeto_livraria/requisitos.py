@@ -2,6 +2,11 @@
 #   python -m venv --without-pip .venv 
 #   source -m venv .venv
 
+#source test4/bin/activate
+#curl https://bootstrap.pypa.io/get-pip.py | python
+#deactivate
+#source test4/bin/activate
+
 # para execultar o venv linux
 #  source .venv/bin/activate
 #
@@ -20,7 +25,7 @@
  
  
 #
-# CREATE USER augusto WITH PASSWORD 'augusto';
+# CREATE USER augusto WITH PASSWORD 'augusto'
 
 # #
 
