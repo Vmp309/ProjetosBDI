@@ -95,6 +95,12 @@ class Vendas:
                 Vendas.berries(self,idvenda)
             elif(formaPagamento == 3 ):
                 Vendas.boleto(self,idvenda)
+    
+    @classmethod
+    def cadastrarVenda(self,idCliente):
+        venda = Venda(Cliente=idCliente)
+        venda.save
+        return venda.pk
             
     def obterVenda(self,id):
         return Venda.objects.get(pk=id)       

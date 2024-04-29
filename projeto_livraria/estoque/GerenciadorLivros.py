@@ -33,7 +33,5 @@ class GerenciadorLivros:
     @classmethod
     def gerar_relatorio(cls):
         livros = Livro.objects.all()
-        
         response = GerenciadorRelatorio.gerar_relatorio_estoque(livros)
-
         return response
