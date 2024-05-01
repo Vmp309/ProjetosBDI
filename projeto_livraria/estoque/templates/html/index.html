@@ -1,186 +1,270 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Página Inicial</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"
-            ><img src="../img/Going-Merry.jpg" height="60px" /> <b>Reading Merry</b></a
+  <head>
+    <title>Reading Merry</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" type="image/x-icon" href="../img/Going-Merry.png" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../html/index.html"
+          ><img src="../img/Going-Merry.png" height="60px" />
+          <b>Reading Merry</b></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Categorias
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'gerar_relatorio_estoque' %}"
+                    >Ação</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'gerar_relatorio_estoque' %}"
+                    >Aventura</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="{% url 'gerar_relatorio_estoque' %}"
+                    >Terror</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <input
+                type="search"
+                class="form-control"
+                placeholder="Buscar Livro"
+                aria-label="Search"
+              />
+            </li>
+          </ul>
+          <div class="col-md-2 text-end">
+            <a href="../usuarios/login.html">
+              <button type="button" class="btn btn-outline-dark me-2">
+                Login
+              </button>
+            </a>
+            <a href="../usuarios/register.html">
+              <button type="button" class="btn btn-dark">Sign up</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container col-xxl-8 px-4 py-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img
+            src="../img/Hero-Merry.jpg"
+            class="d-block mx-lg-auto img-fluid"
+            alt="Bootstrap Themes"
+            width="700"
+            height="500"
+            loading="lazy"
+          />
+        </div>
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
+            Embarque no Reading Merry!
+          </h1>
+          <p class="lead">
+            Perca-se entre os milhares de livros que adornam nossas prateleiras,
+            desde clássicos atemporais até lançamentos mais recentes. Descubra
+            novos mundos, explore diferentes gêneros e alimente sua paixão pela
+            leitura em um ambiente aconchegante e convidativo.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container px-4 py-5" id="custom-cards">
+      <h2 class="pb-2 border-bottom">Desconto de <b>5%</b> para:</h2>
+
+      <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+        <div class="col">
+          <div
+            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+            style="background-image: url('../img/Flamengo.png')"
           >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            <div
+              class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
+            >
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                Flamenguistas
+              </h3>
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="me-auto"></li>
+                <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#geo-fill"></use>
+                  </svg>
+                </li>
+                <li class="d-flex align-items-center">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#calendar3"></use>
+                  </svg>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div
+            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+            style="background-image: url('../img/One-Piece.jpg')"
           >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Services
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'listar_livros' %}">Catálogo literário</a></li>
-                  <li><a class="dropdown-item" href="{% url 'criar_livro' %}">Cadastro de Livro</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item" href="{% url 'gerar_relatorio_estoque' %}">Gerar relatório de estoque em PDF</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <div class="col-md-2 text-end">
-              <button type="button" class="btn btn-outline-dark me-2">Login</button>
-              <button type="button" class="btn btn-dark">Sign-up</button>
+            <div
+              class="d-flex flex-column h-100 p-5 pb-3 text-black text-shadow-1"
+            >
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                Fãs de One Piece
+              </h3>
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="me-auto"></li>
+                <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#geo-fill"></use>
+                  </svg>
+                </li>
+                <li class="d-flex align-items-center">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#calendar3"></use>
+                  </svg>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </nav>
 
-
-      <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-          <div class="col-10 col-sm-8 col-lg-6">
-            <img src="../img/Hero-Merry.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-          </div>
-          <div class="col-lg-6">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Embarque no Reading Merry!</h1>
-            <p class="lead"> Perca-se entre os milhares de livros que adornam nossas prateleiras, desde clássicos atemporais até lançamentos mais recentes. Descubra novos mundos, explore diferentes gêneros e alimente sua paixão pela leitura em um ambiente aconchegante e convidativo.</p>
-    
-          </div>
-        </div>
-      </div>
-      
-      <div class="container px-4 py-5" id="custom-cards">
-        <h2 class="pb-2 border-bottom">Desconto de <b>5%</b> para:</h2>
-    
-        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-          <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('../img/Flamengo.png');">
-              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Flamenguistas</h3>
-                <ul class="d-flex list-unstyled mt-auto">
-                  <li class="me-auto">
-                    
-                  </li>
-                  <li class="d-flex align-items-center me-3">
-                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                    
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-                    
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('../img/One-Piece.jpg');">
-              <div class="d-flex flex-column h-100 p-5 pb-3 text-black text-shadow-1">
-                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Fãs de One Piece</h3>
-                <ul class="d-flex list-unstyled mt-auto">
-                  <li class="me-auto">
-
-                  </li>
-                  <li class="d-flex align-items-center me-3">
-                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-    
-          <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg text-black" style="background-image: url('../img/Marcelo.png');">
-              <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Sousas...</h3>
-                <ul class="d-flex list-unstyled mt-auto">
-                  <li class="me-auto">
-                    
-                  </li>
-                  <li class="d-flex align-items-center me-3">
-                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                    
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-                    
-                  </li>
-                </ul>
-              </div>
+        <div class="col">
+          <div
+            class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg text-black"
+            style="background-image: url('../img/Marcelo.png')"
+          >
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Sousas...</h3>
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="me-auto"></li>
+                <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#geo-fill"></use>
+                  </svg>
+                </li>
+                <li class="d-flex align-items-center">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#calendar3"></use>
+                  </svg>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-      <hr class="featurette-divider">
+    </div>
+    <hr class="featurette-divider" />
 
-      <div class="container col-xl-10 col-xxl-8 px-4 py-5">
-        <div class="row align-items-center g-lg-5 py-5">
-          <div class="col-lg-7 text-center text-lg-start">
-            <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Entre na tripulação</h1>
-            <p class="col-lg-10 fs-4">Mais do que um lugar para comprar livros, a livraria é um refúgio para a mente e o coração. Cadastre-se e faça parte da nossa comunidade de amantes da leitura.</p>
+    <div class="container px-4 py-5">
+      <h2 class="mb-5">Os Melhores Livros:</h2>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="../img/books/O Menino, a toupeira, a raposa e o cavalo.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                O Menino, a Toupeira, a Raposa e o Cavalo
+              </h5>
+              <p class="card-text">
+                O livro explora temas como amizade, compaixão, esperança e o
+                significado da vida. Escrito com linguagem simples e ilustrações
+                encantadoras, é um livro tocante para leitores de todas as
+                idades.
+              </p>
+            </div>
           </div>
-          <div class="col-md-10 mx-auto col-lg-5">
-            <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" data-bitwarden-watching="1">
-              <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Senha</label>
-              </div>
-              <div class="checkbox mb-1">
-                <label>
-                  <input type="checkbox" value="remember-me"> Flamenguista
-                </label>
-              </div>
-              <div class="checkbox mb-1">
-                <label>
-                  <input type="checkbox" value="remember-me"> Fã de One Piece
-                </label>
-              </div>
-              <div class="checkbox mb-4">
-                <label>
-                  <input type="checkbox" value="remember-me"> Sousa
-                </label>
-              </div>
-                
-              <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
-              <hr class="my-4">
-              <small class="text-body-secondary">Clicando em Sign up, você concorda com os termos de uso.</small>
-            </form>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="../img/books/O Pequeno Principe.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">O Pequeno Príncipe</h5>
+              <p class="card-text">
+                O livro explora temas como amor, amizade, perda e a importância
+                da imaginação. É um conto clássico que continua a encantar
+                leitores de todas as idades.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="../img/books/A bússola de ouro.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">A Bússola de Ouro</h5>
+              <p class="card-text">
+                O livro é o primeiro volume da trilogia "Dark Materials" e
+                explora temas como religião, filosofia, livre arbítrio e a luta
+                entre o bem e o mal.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-      </body>
-      </html>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
