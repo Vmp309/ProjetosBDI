@@ -108,11 +108,6 @@ class Vendas:
     
     def gerarRelatorio(self, dataInicio, dataFim):
         with connection.cursor() as cursor:
-<<<<<<< Updated upstream
             relatorio = cursor.callproc(gerar_relatório_de_vendas, dataInicio, dataFim)
             return relatorio
-=======
-            cursor.callproc('storeProcedureVendas.sql')
-            # Optionally fetch results using cursor.fetchall() or cursor.fetchone()
->>>>>>> Stashed changes
 
