@@ -87,7 +87,7 @@ def register_cliente(request):
             return redirect('login')
     else:
         form = ClienteCreationForm()
-    return render(request, 'usuarios/register_cliente.html', {'form': form})
+    return render(request, 'usuarios/register-client.html', {'form': form})
 
 def register_vendedor(request):
     if request.method == 'POST':
