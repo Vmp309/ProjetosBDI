@@ -1,6 +1,6 @@
 
 CREATE OR REPLACE PROCEDURE gerar_relatório_de_vendas(@dataInicio DATE,@dataFim DATE)
-LANGUAGE 'sql'
+LANGUAGE 'plpgsql'
 AS $$
 BEGIN
 
