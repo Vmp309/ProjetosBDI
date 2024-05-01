@@ -33,7 +33,11 @@ class GerenciadorLivros:
         livro.delete()
     
     @classmethod
-    def gerar_relatorio(cls):
-        livros = Livro.objects.all()
-        response = GerenciadorRelatorio.gerar_relatorio_estoque(livros)
-        return response
+    def gerar_relatorio(cls, dataInicio, dataFim):
+        with connection.cursor() as cursor:
+            relatorio = cursor.callproc(gerar_relatorio_livros, dataInicio, dataFim)
+            return relatorio
+        
+        # livros = Livro.objects.all()
+        # response = GerenciadorRelatorio.gerar_relatorio_estoque(livros)
+        # return response

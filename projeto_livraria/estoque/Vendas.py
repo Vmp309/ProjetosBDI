@@ -108,6 +108,6 @@ class Vendas:
     
     def gerarRelatorio(self, dataInicio, dataFim):
         with connection.cursor() as cursor:
-            relatorio = cursor.callproc(gerar_relatório_de_vendas, parameters)
+            relatorio = cursor.callproc(gerar_relatório_de_vendas, dataInicio, dataFim)
             return relatorio
 
