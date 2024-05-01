@@ -1,11 +1,6 @@
-import django.db
-from django.db import connection
 
-
-CREATE OR REPLACE PROCEDURE gerar_relatório_de_vendas(
-    @dataInicio DATE,
-    @dataFim DATE
-)
+CREATE OR REPLACE PROCEDURE gerar_relatório_de_vendas(@dataInicio DATE,@dataFim DATE)
+LANGUAGE 'sql'
 AS $$
 BEGIN
 
@@ -45,6 +40,21 @@ BEGIN
   SET vendasBerries = COALESCE(vendasBerries, 0);
   SET VendasConcluidas = COALESCE(VendasConcluidas, 0);
 
-  return totalVendas,descontoTotal,totalPago,vendasDinheiro,vendasCartaoDebito,vendasCartaoCredito,vendasBerries,VendasConcluidas
+  -- Exibir o relatório de vendas
+  RAISE NOTICE 'Relatório de Vendas';
+  RAISE NOTICE '-----------------------';
+  RAISE NOTICE 'Data de Início: %s', @dataInicio;
+  RAISE NOTICE 'Data de Fim: %s', @dataFim;
+  RAISE NOTICE '-----------------------';
+  RAISE NOTICE 'Total de Vendas: R$%.2f', totalVendas;
+  RAISE NOTICE 'Total de Descontos: R$%.2f', descontoTotal;
+  RAISE NOTICE 'Total Pago: R$%.2f', totalPago;
+  RAISE NOTICE 'Vendas em Dinheiro: R$%.2f', vendasDinheiro;
+  RAISE NOTICE 'Vendas em Pix: R$%.2f', vendasPix;
+  RAISE NOTICE 'Vendas em Cartão de Debito: R$%.2f', vendasCartaoDebito;
+  RAISE NOTICE 'Vendas em Cartão de Credito: R$%.2f', vendasCartaoCredito;
+  RAISE NOTICE 'Vendas em Berries: R$%.2f', vendasBerries;
+  RAISE NOTICE 'Vendas Concluídas: %d', VendasConcluidas;
+  RAISE NOTICE '-----------------------';
 
-END $$ LANGUAGE plpgsql;
+END $$
