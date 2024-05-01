@@ -16,11 +16,11 @@ class CustomLoginView(auth_views.LoginView):
 
 
 def pagina_inicial(request):
-    return render(request, 'estoque/pagina_inicial.html')
+    return render(request, 'html/index.html')
 
 def listar_livros(request):
     livros = GerenciadorLivros.listar_livros()
-    return render(request, 'estoque/listar_livros.html', {'livros': livros})
+    return render(request, 'html/listar_livros.html', {'livros': livros})
 
 def criar_livro(request):
     if request.method == 'POST':
@@ -35,7 +35,7 @@ def criar_livro(request):
             return redirect(listar_livros)
     else:
         form = LivroForm()
-    return render(request, 'estoque/criar_livro.html', {'form': form})
+    return render(request, 'html/criar_livro.html', {'form': form})
 
 def editar_livro(request, pk):
     livro = get_object_or_404(Livro, pk=pk)
@@ -52,14 +52,14 @@ def editar_livro(request, pk):
             return redirect(listar_livros)
     else:
         form = LivroForm(instance=livro)
-    return render(request, 'estoque/editar_livro.html', {'form': form, 'livro': livro})
+    return render(request, 'html/editar_livro.html', {'form': form, 'livro': livro})
 
 def deletar_livro(request, pk):
     livro = get_object_or_404(Livro, pk=pk)
     if request.method == 'POST':
         livro.delete()
         return redirect(listar_livros)
-    return render(request, 'estoque/deletar_livro.html', {'livro': livro})
+    return render(request, 'html/deletar_livro.html', {'livro': livro})
 
 def gerar_relatorio(request):
     return GerenciadorLivros.gerar_relatorio()

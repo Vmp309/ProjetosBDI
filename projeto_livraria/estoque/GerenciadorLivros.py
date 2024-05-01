@@ -7,8 +7,8 @@ class GerenciadorLivros:
         return Livro.objects.all()
 
     @classmethod
-    def criar_livro(cls, titulo, autor, quantidade_em_estoque):
-        livro = Livro(titulo=titulo, autor=autor, quantidade_em_estoque=quantidade_em_estoque)
+    def criar_livro(cls, titulo, autor, quantidade_em_estoque, valor):
+        livro = Livro(titulo=titulo, autor=autor, quantidade_em_estoque=quantidade_em_estoque, valor=valor)
         livro.save()
         return livro
 
@@ -17,11 +17,12 @@ class GerenciadorLivros:
         return Livro.objects.get(pk=pk)
 
     @classmethod
-    def atualizar_livro(cls, pk, titulo, autor, quantidade_em_estoque):
+    def atualizar_livro(cls, pk, titulo, autor, quantidade_em_estoque, valor):
         livro = Livro.objects.get(pk=pk)
         livro.titulo = titulo
         livro.autor = autor
         livro.quantidade_em_estoque = quantidade_em_estoque
+        livro.valor = valor
         livro.save()
         return livro
 
