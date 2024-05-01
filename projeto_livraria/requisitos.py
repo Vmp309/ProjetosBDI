@@ -13,7 +13,7 @@
 # para executar o venv windows
 #   .venv\Scripts\activate   
 # 
-# #
+# 
 
 # para execultar o projeto
 #   python3 manage.py runserver
@@ -21,9 +21,7 @@
 #atualixar as dependencias    
 #  pip freeze > requiments.txt 
 #instalar as dependencias
-#  pip install -r requiments.txt
- 
- 
+#  pip install -r requiments.txt 
 #
 # CREATE USER augusto WITH PASSWORD 'augusto'
 
@@ -48,9 +46,9 @@
     # compras.
 
     # Caso o produto não tenha mais estoque, uma compra não deve ser efetivada.
-    # Deve ser possivel verificar produtos por nome, faixa de preço, categoria e se foram fabricados em
-    # Mari. Caso seja um funcionário usando o sistema, ele deve poder filtrar pelos produtos que possuem
-    # menos que 5 unidades disponíveis.
+    # Deve ser possivel verificar produtos por nome, faixa de preço, categoria e se foram fabricados em Mari. 
+    # Caso seja um funcionário usando o sistema, ele deve poder filtrar pelos produtos que possuem
+    #   menos que 5 unidades disponíveis.
 
     # Deve ser emitido mensalmente um relatório com as vendas de cada vendedor
     # Devem haver pelo menos uma view e uma stored procedure. 
