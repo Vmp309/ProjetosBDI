@@ -1,4 +1,4 @@
-from .models import vendedor
+from .models import Vendedor
 
 class Gerenciadorvendedor:
     @classmethod

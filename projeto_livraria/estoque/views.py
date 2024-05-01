@@ -1,9 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.forms import UserCreationForm
 from .models import Livro
 from .forms import LivroForm
 from .GerenciadorLivros import GerenciadorLivros
+from django.http import HttpResponseRedirect
+from django.contrib.auth import views as auth_views
 
 # Create your views here.
+
+class CustomLoginView(auth_views.LoginView):
+
+    def form_valid(self, form):
+        # Lógica personalizada aqui, se necessário
+        return HttpResponseRedirect(self.get_success_url('estoque'))
+
 
 def pagina_inicial(request):
     return render(request, 'estoque/pagina_inicial.html')
@@ -19,7 +29,8 @@ def criar_livro(request):
             GerenciadorLivros.criar_livro(
                 titulo=form.cleaned_data['titulo'],
                 autor=form.cleaned_data['autor'],
-                quantidade_em_estoque=form.cleaned_data['quantidade_em_estoque']
+                quantidade_em_estoque=form.cleaned_data['quantidade_em_estoque'],
+                valor=form.cleaned_data['valor']
             )
             return redirect(listar_livros)
     else:
@@ -35,7 +46,8 @@ def editar_livro(request, pk):
                 pk=pk,
                 titulo=form.cleaned_data['titulo'],
                 autor=form.cleaned_data['autor'],
-                quantidade_em_estoque=form.cleaned_data['quantidade_em_estoque'])
+                quantidade_em_estoque=form.cleaned_data['quantidade_em_estoque'],
+                valor=form.cleaned_data['valor'])
             
             return redirect(listar_livros)
     else:
@@ -51,3 +63,13 @@ def deletar_livro(request, pk):
 
 def gerar_relatorio(request):
     return GerenciadorLivros.gerar_relatorio()
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+    return render(request, 'usuarios/register.html', {'form': form})

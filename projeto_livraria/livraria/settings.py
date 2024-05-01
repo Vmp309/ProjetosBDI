@@ -135,3 +135,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ALLOWED_HOSTS=['*']
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+LOGIN_REDIRECT_URL = '/profile/'
