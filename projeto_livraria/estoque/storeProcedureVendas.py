@@ -4,7 +4,7 @@ LANGUAGE 'sql'
 AS $$
 BEGIN
 
-  -- Declare variables for storing report data
+  -- Declarar variáveis ​​para armazenar dados de relatório
   DECLARE totalVendas NUMERIC(10,2) := 0;
   DECLARE descontoTotal NUMERIC(10,2) := 0;
   DECLARE totalPago NUMERIC(10,2) := 0;
