@@ -7,6 +7,7 @@ class Livro(models.Model):
     autor = models.CharField(max_length=100)
     quantidade_em_estoque = models.PositiveIntegerField()
     valor = models.PositiveIntegerField()
+    origem= models.CharField(max_length=100)
 
     def __str__(self):
         return self.titulo
@@ -16,7 +17,6 @@ class Cliente(models.Model):
     cpf =  models.CharField(max_length=11)
     isflamengo = models.BooleanField()
     onePiece = models.BooleanField()
-    endereco = models.CharField(max_length=100)
     endereco = models.CharField(max_length=100)
     
     def __str__(self):

@@ -1,6 +1,7 @@
 from .models import Cliente 
 from .models import Venda
 from .models import Livro
+from django.db import connection
 
 class Vendas:
     
@@ -73,7 +74,7 @@ class Vendas:
             desconto+=0.05
         if(cliente.onePiece==True):
             desconto+=0.05
-        if (cliente.endereco == "mari"):
+        if (cliente.endereco == "souza"):
             desconto+=0.05
         
         valDesconto = venda.valorTotal-(venda.valorTotal*desconto)
@@ -104,3 +105,9 @@ class Vendas:
             
     def obterVenda(self,id):
         return Venda.objects.get(pk=id)       
+    
+    def gerarRelatorio(self, dataInicio, dataFim):
+        with connection.cursor() as cursor:
+            relatorio = cursor.callproc(gerar_relatório_de_vendas, parameters)
+            return relatorio
+
