@@ -1,15 +1,10 @@
-import django.db
-from django.db import connection
 
-
-CREATE OR REPLACE PROCEDURE gerar_relatório_de_vendas(
-    @dataInicio DATE,
-    @dataFim DATE
-)
+CREATE OR REPLACE PROCEDURE gerar_relatório_de_vendas(@dataInicio DATE,@dataFim DATE)
+LANGUAGE 'plpgsql'
 AS $$
 BEGIN
 
-  -- Declare variables for storing report data
+  -- Declarar variáveis ​​para armazenar dados de relatório
   DECLARE totalVendas NUMERIC(10,2) := 0;
   DECLARE descontoTotal NUMERIC(10,2) := 0;
   DECLARE totalPago NUMERIC(10,2) := 0;
@@ -61,5 +56,4 @@ BEGIN
   RAISE NOTICE 'Vendas em Berries: R$%.2f', vendasBerries;
   RAISE NOTICE 'Vendas Concluídas: %d', VendasConcluidas;
   RAISE NOTICE '-----------------------';
-
-END $$ LANGUAGE plpgsql;
+END $$
