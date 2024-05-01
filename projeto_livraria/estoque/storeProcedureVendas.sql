@@ -56,4 +56,4 @@ BEGIN
   RAISE NOTICE 'Vendas em Berries: R$%.2f', vendasBerries;
   RAISE NOTICE 'Vendas Concluídas: %d', VendasConcluidas;
   RAISE NOTICE '-----------------------';
-END $$
+END $$;

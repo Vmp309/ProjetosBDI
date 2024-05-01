@@ -42,4 +42,4 @@ BEGIN
     END IF;
 
     RAISE NOTICE '-----------------------';
-END $$
+END $$;
