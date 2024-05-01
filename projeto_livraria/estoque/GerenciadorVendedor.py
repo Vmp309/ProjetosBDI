@@ -1,13 +1,13 @@
 from .models import Vendedor
 
-class Gerenciadorvendedor:
+class GerenciadorVendedor:
     @classmethod
     def listar_Vendedor(cls):
         return Vendedor.objects.all()
 
     @classmethod
-    def cadastrar_Vendedor(cls, nome, cpf,endereco):
-        vendedor = Vendedor(nome=nome, cpf=cpf,endereco=endereco)
+    def cadastrar_Vendedor(cls,username, password, nome, cpf):
+        vendedor = Vendedor(username=username, password=password, nome=nome, cpf=cpf)
         vendedor.save()
         return vendedor
 
@@ -29,3 +29,14 @@ class Gerenciadorvendedor:
     def deletar_Vendedor(cls, id):
         vendedor = Vendedor.objects.get(pk=id)
         vendedor.delete()
+
+    def login(cls, username, password):
+        
+        try:
+            user = Vendedor.objects.get(username=username, password=password)
+        
+        except:
+            return "Nome de usuário ou senha inválidos!"
+        
+        else:
+            return True, user 

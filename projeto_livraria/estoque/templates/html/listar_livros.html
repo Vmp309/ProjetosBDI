@@ -7,7 +7,7 @@
     <h1>Lista de Livros</h1>
     <ul>
         {% for livro in livros %}
-            <li>{{ livro.titulo }} - {{ livro.autor }} - {{livro.quantidade_em_estoque}} - {{livro.valor}}</li>
+            <li>{{ livro.titulo }} - {{ livro.autor }} - {{livro.quantidade_em_estoque}} - {{livro.valor}} - {{livro.origem}} - {{livro.categoria}}</li>
             <a href="{% url 'editar_livro' livro.id %}">Editar</a>
             <a href="{% url 'excluir_livro' livro.id %}">Excluir</a>
         {% endfor %}
