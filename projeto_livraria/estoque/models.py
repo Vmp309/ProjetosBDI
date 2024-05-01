@@ -36,7 +36,7 @@ class Venda(models.Model):
     Pagconcluido = models.BooleanField()
     cliente = models.ManyToManyField(Cliente)
     livros = models.ExpressionList({})
-    vendedor = modeks.models.ManyToManyField(Vendedor)
+    vendedor = models.ManyToManyField(Vendedor)
     
     def __str__(self) :
         return self.pk

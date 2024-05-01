@@ -21,7 +21,7 @@
 #atualixar as dependencias    
 #  pip freeze > requiments.txt 
 #instalar as dependencias
-#  pip install -r requiments.txt 
+#  pip install -r .\requirements.txt 
 #
 # CREATE USER augusto WITH PASSWORD 'augusto'
 
@@ -51,5 +51,5 @@
     #   menos que 5 unidades disponíveis.
 
     # Deve ser emitido mensalmente um relatório com as vendas de cada vendedor
-    # Devem haver pelo menos uma view e uma stored procedure. 
+    # Devem haver pelo menos uma view e uma stored procedure
     # Também devem ser criados índices e restrições de integridade referencial para as tabelas.
