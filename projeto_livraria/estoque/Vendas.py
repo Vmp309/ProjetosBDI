@@ -1,6 +1,7 @@
 from .models import Cliente 
 from .models import Venda
 from .models import Livro
+from django.db import connection
 
 class Vendas:
     
@@ -104,3 +105,9 @@ class Vendas:
             
     def obterVenda(self,id):
         return Venda.objects.get(pk=id)       
+    
+    def gerarRelatorio(self, dataInicio, dataFim):
+        with connection.cursor() as cursor:
+            cursor.callproc(gerar_relatório_de_vendas, parameters)
+            # Optionally fetch results using cursor.fetchall() or cursor.fetchone()
+
