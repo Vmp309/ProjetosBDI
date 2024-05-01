@@ -68,7 +68,7 @@ class Vendas:
     def desconto(self, idVenda):
         venda = Venda.objects.get(pk=idVenda)
         desconto=0.00
-        cliente = Cliente.objects.get(pk=venda.Cliente)
+        cliente = Cliente.objects.get(pk=venda.cliente)
         if(cliente.isflamengo==True):
             desconto+=0.05
         if(cliente.onePiece==True):
@@ -85,7 +85,7 @@ class Vendas:
     @classmethod
     def pagamento(self,idCliente,idvenda ,formaPagamento):
         venda = Venda.objects.get(pk=idvenda)
-        venda.Cliente= Cliente.objects.get(pk=idCliente)
+        venda.cliente= Cliente.objects.get(pk=idCliente)
         if venda.livros != None:
             if(formaPagamento == 0):
                 Vendas.pix(self,idvenda)
@@ -97,8 +97,8 @@ class Vendas:
                 Vendas.boleto(self,idvenda)
     
     @classmethod
-    def cadastrarVenda(self,idCliente):
-        venda = Venda(Cliente=idCliente)
+    def cadastrarVenda(self,idCliente, idVendedor):
+        venda = Venda(cliente=idCliente,vendedor=idVendedor)
         venda.save
         return venda.pk
             

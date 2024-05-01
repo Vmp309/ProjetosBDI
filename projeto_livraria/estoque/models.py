@@ -17,6 +17,14 @@ class Cliente(models.Model):
     isflamengo = models.BooleanField()
     onePiece = models.BooleanField()
     endereco = models.CharField(max_length=100)
+    endereco = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.pk
+    
+class Vendedor(models.Model):
+    nome = models.CharField(max_length=100)
+    cpf =  models.CharField(max_length=11)
     
     def __str__(self):
         return self.pk
@@ -26,8 +34,9 @@ class Venda(models.Model):
     valorDesconto = models.PositiveIntegerField() 
     formaPagamento = models.CharField(max_length=7) 
     Pagconcluido = models.BooleanField()
-    Cliente = models.ManyToManyField(Cliente)
-    livros= models.ExpressionList({})
+    cliente = models.ManyToManyField(Cliente)
+    livros = models.ExpressionList({})
+    vendedor = modeks.models.ManyToManyField(Vendedor)
     
     def __str__(self) :
         return self.pk
