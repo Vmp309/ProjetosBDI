@@ -73,7 +73,7 @@ class Vendas:
             desconto+=0.05
         if(cliente.onePiece==True):
             desconto+=0.05
-        if (cliente.endereco == "mari"):
+        if (cliente.endereco == "souza"):
             desconto+=0.05
         
         valDesconto = venda.valorTotal-(venda.valorTotal*desconto)
