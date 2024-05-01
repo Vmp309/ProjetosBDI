@@ -1,4 +1,3 @@
-from .GerenciadorCliente import GerenciadorCliente
 from .GerenciadorVendedor import GerenciadorVendedor
 
 def authenticate(username, password, user_type):

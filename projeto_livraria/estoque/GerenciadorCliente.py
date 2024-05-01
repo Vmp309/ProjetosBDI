@@ -6,8 +6,8 @@ class GerenciadorCliente:
         return Cliente.objects.all()
 
     @classmethod
-    def cadastrar(cls, nome, cpf, isflamengo, onePiece,endereco):
-        cliente = Cliente(nome=nome, cpf=cpf, isflamengo=isflamengo,onePiece=onePiece,endereco=endereco)
+    def cadastrar(cls, username, password,nome, cpf, isflamengo, onePiece,endereco):
+        cliente = Cliente(username=username, password=password,nome=nome, cpf=cpf, isflamengo=isflamengo,onePiece=onePiece,endereco=endereco)
         cliente.save()
         return cliente
 
@@ -31,3 +31,15 @@ class GerenciadorCliente:
     def deletar_Cliente(cls, id):
         cliente = Cliente.objects.get(pk=id)
         cliente.delete()
+    
+    @classmethod
+    def login(cls, username, password):
+        
+        try:
+            user = Cliente.objects.get(username=username, password=password)
+        
+        except:
+            return "Nome de usuário ou senha inválidos!"
+        
+        else:
+            return True, user

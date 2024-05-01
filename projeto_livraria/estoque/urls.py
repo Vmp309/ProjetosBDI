@@ -10,7 +10,8 @@ urlpatterns = [
     path('editar/<int:pk>/', views.editar_livro, name='editar_livro'),
     path('deletar/<int:pk>/', views.deletar_livro, name='excluir_livro'),
     path('relatorio_estoque', views.gerar_relatorio, name='gerar_relatorio_estoque'),
-    path('login/', auth_views.LoginView.as_view(template_name='usuarios/login.html'), name='login'),
+    path('login/', views.login, name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('register/', views.register, name='register'),
+    path('register/cliente', views.register_cliente, name='register_cliente'),
+    path('register/vendedor', views.register_vendedor, name='register_vendedor'), 
 ]

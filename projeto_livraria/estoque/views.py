@@ -1,18 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.forms import UserCreationForm
 from .models import Livro
-from .forms import LivroForm
+from .forms import LivroForm, ClienteCreationForm, VendedorCreationForm, LoginForm
 from .GerenciadorLivros import GerenciadorLivros
+from .GerenciadorCliente import GerenciadorCliente
+from .GerenciadorVendedor import GerenciadorVendedor
+from .auth import authenticate
 from django.http import HttpResponseRedirect
-from django.contrib.auth import views as auth_views
+from .Vendas import Vendas
 
 # Create your views here.
 
-class CustomLoginView(auth_views.LoginView):
+"""class CustomLoginView(auth_views.LoginView):
 
     def form_valid(self, form):
         # Lógica personalizada aqui, se necessário
-        return HttpResponseRedirect(self.get_success_url('estoque'))
+        return HttpResponseRedirect(self.get_success_url('estoque'))"""
 
 
 def pagina_inicial(request):
@@ -30,7 +32,9 @@ def criar_livro(request):
                 titulo=form.cleaned_data['titulo'],
                 autor=form.cleaned_data['autor'],
                 quantidade_em_estoque=form.cleaned_data['quantidade_em_estoque'],
-                valor=form.cleaned_data['valor']
+                valor=form.cleaned_data['valor'],
+                origem=form.cleaned_data['origem'],
+                categoria=form.cleaned_data['categoria']
             )
             return redirect(listar_livros)
     else:
@@ -47,7 +51,9 @@ def editar_livro(request, pk):
                 titulo=form.cleaned_data['titulo'],
                 autor=form.cleaned_data['autor'],
                 quantidade_em_estoque=form.cleaned_data['quantidade_em_estoque'],
-                valor=form.cleaned_data['valor'])
+                valor=form.cleaned_data['valor'],
+                origem=form.cleaned_data['origem'],
+                categoria=form.cleaned_data['categoria'])
             
             return redirect(listar_livros)
     else:
@@ -62,14 +68,47 @@ def deletar_livro(request, pk):
     return render(request, 'html/deletar_livro.html', {'livro': livro})
 
 def gerar_relatorio(request):
-    return GerenciadorLivros.gerar_relatorio()
+    return Vendas.gerar_relatorio()
 
-def register(request):
+def register_cliente(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = ClienteCreationForm(request.POST)
         if form.is_valid():
+            GerenciadorCliente.cadastrar(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password'],
+                nome=form.cleaned_data['nome'],
+                cpf=form.cleaned_data['cpf'],
+                isflamengo=form.cleaned_data['isflamengo'],
+                onePiece=form.cleaned_data['onePiece'],
+                endereco=form.cleaned_data['endereco']
+            )
             form.save()
             return redirect('login')
     else:
-        form = UserCreationForm()
-    return render(request, 'usuarios/register.html', {'form': form})
+        form = ClienteCreationForm()
+    return render(request, 'usuarios/register_cliente.html', {'form': form})
+
+def register_vendedor(request):
+    if request.method == 'POST':
+        form = VendedorCreationForm(request.POST)
+        if form.is_valid():
+            GerenciadorVendedor.cadastrar_Vendedor(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password'],
+                nome=form.cleaned_data['nome'],
+                cpf=form.cleaned_data['cpf']
+            )
+            form.save()
+            return redirect('login')
+    else:
+        form = ClienteCreationForm()
+    return render(request, 'usuarios/register_vendedor.html', {'form': form})
+
+def login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        auth = authenticate(form.username, form.password)
+        if auth[0] == True:
+            return render(request, 'usuarios/profile.html')
+
