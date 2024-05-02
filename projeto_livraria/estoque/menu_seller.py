@@ -1,7 +1,6 @@
 from menu_buscar import MenuBuscar
 
 class MenuSeller:
-    opcao = 99
     vendedor_online = True
 
     def __init__(self):

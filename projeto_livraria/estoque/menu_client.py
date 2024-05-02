@@ -1,7 +1,6 @@
 from menu_buscar import MenuBuscar
 
 class MenuClient:
-    opcao = 99
     cliente_online = True
     lista_compra = []   
 

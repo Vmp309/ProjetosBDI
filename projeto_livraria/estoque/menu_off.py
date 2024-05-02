@@ -2,7 +2,6 @@ from .models import Cliente
 from GerenciadorCliente import GerenciadorCliente
 
 class MenuOff:
-    opcao = 99
     cliente_fez_login = False
     vendedor_fez_login = False
     variavel_usuario_login = ''
