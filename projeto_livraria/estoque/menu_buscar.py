@@ -52,10 +52,10 @@ class MenuBuscar:
             filtrar = input("-> ")
             
         if (livro.nome == nome):
-            if tipo == 0:
+            if tipo == 0: # Cliente
                 return livro
-            elif tipo == 1:                
-                if filtrar == 1:
+            elif tipo == 1: # Vendedor        
+                if filtrar == 1: # Filtrar = True
                     if livro.quantidade_em_estoque <= 5: 
                         return livro
                 else:
@@ -67,9 +67,11 @@ class MenuBuscar:
             print("Livro não encontrado")
             return 0
             
-    def consultarPreco(self, maior , menor):
+    def consultarPreco(self, maior, menor):
         if tipo == 1:
-            filtrar=input("Digte 1 para filtar por quantidade menor que 5\nDitite 0 para não filtrar\n>)
+            print("1) Filtrar por quantidade menor que 5")
+            print("2) Não Filtrar")
+            filtrar = input("-> ")
         livros=none
         preco = menor
         while maior !=menor

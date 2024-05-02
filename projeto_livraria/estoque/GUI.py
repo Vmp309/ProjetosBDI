@@ -1,12 +1,6 @@
 from menu_client import MenuClient
 from menu_seller import MenuSeller
 from menu_off import MenuOff
-from Vendas import Vendas
-
-from .models import Cliente 
-from .models import Venda
-from .models import Livro
-from django.db import connection
 
 isClientLogged = False
 isSellerLogged = False

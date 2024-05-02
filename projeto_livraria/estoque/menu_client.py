@@ -2,7 +2,7 @@ from menu_buscar import MenuBuscar
 
 class MenuClient:
     cliente_online = True
-    lista_compra = []   
+    lista_compra = []
 
     def __init__(self):
         pass
@@ -17,7 +17,7 @@ class MenuClient:
         opcao = input("Digite a opção: ")
         if(opcao == 1): # Chama o menu de busca apenas para printar o livro
             resultado = MenuBuscar()
-            resultado.exibir_menu(3)
+            resultado.exibir_menu(13)
         elif(opcao == 2):
             pass # Efetua a funcionalidade de compra.
         elif(opcao == 3):
