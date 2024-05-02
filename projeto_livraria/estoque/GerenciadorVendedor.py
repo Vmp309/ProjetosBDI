@@ -12,7 +12,7 @@ class GerenciadorVendedor:
         return vendedor
 
     @classmethod
-    def obter_Vendedor(cls, pk):
+    def obter_vendedor(cls, pk):
         return Vendedor.objects.get(pk=pk)
 
     @classmethod
