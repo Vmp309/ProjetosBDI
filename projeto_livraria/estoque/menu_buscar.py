@@ -1,4 +1,5 @@
 from models import Livro
+from Vendas import Vendas
 
 class MenuBuscar:
     tipo = None # Tipo = 0 cliente, Tipo = 1 vendedor, tipo = 3 compras
@@ -60,7 +61,7 @@ class MenuBuscar:
                     else:
                         return
                 else:
-                    return livro
+                    return livro                
             else:
                 print(livro)
                 return 
