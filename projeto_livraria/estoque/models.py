@@ -6,8 +6,8 @@ class Livro(models.Model):
     autor = models.CharField(max_length=100)
     quantidade_em_estoque = models.PositiveIntegerField()
     valor = models.PositiveIntegerField(default=0)
-    origem= models.CharField(max_length=100, default='Mari')
-    categoria=models.PositiveIntegerField(default=1)
+    origem = models.CharField(max_length=100, default='Mari')
+    categoria = models.PositiveIntegerField(default=1)
 
     def __str__(self):
         return self.titulo

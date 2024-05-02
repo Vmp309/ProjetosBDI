@@ -16,7 +16,7 @@ class MenuSeller:
         opcao = input("Digite a opcao: ")
         if(opcao == 1):
             resultado = MenuBuscar()
-            resultado.exibir_menu(1)
+            resultado.exibir_menu("operação_vendedor")
         elif(opcao == 2):
             pass # Chama a funcionalidade de adicionar um livro no Banco de Dados
         elif(opcao == 3):

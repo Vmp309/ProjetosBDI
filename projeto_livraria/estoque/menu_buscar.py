@@ -1,9 +1,9 @@
+from django import django
 from .models import Livros
 
 class MenuBuscar:
     tipo = None # Tipo = 0 cliente, Tipo = 1 vendedor, tipo = 3 compras
     
-
     def exibir_menu(self, tipo ):
             self.tipo = tipo        
             print("Consulta de livros")
@@ -12,31 +12,31 @@ class MenuBuscar:
             print("3) Pesquisar por Categoria")
             print("4) Foi fabricado em Mari")
             opcao = input("Digite a opcao:")
-            if (opcao == 1):
-                nome = input( "Digite o nome do livro")
+            if (opcao == 1): # Pesquisa o livro pelo nome
+                nome = input("Digite o nome do livro: ")
                 livro = consultarNome(nome)
-                if (livro != None):
+                if (livro != None):# Se o livro não for None, retorna o id do livro
                     return livro
                 else:
                     return
-            elif (opcao == 2):
-                maior = input("Digite o maior preço\n>")
-                menor = input("Digite o menor preço\n>")
+            elif (opcao == 2): # Pesquisa por uma faixa de preço
+                maior = input("Digite o maior preço\n->")
+                menor = input("Digite o menor preço\n->")
                 livro = consultarPreco(maior, menor)
-                if (livro != None):
+                if (livro != None): # Se o livro não for None, retorna o id do livro
                     return livro
                 else:
                     return
-            elif (opcao == 3):
+            elif (opcao == 3): # Prsquisa por Categoria
                 categoria = input("Digite a Categoria\n>") 
                 livros = consultarCategoria(categoria)
-                if (livros != None):
+                if (livros != None): # Se a lista de livros não for None, retorna a lista
                     return livros
                 else: 
                     return 
-            elif (opcao == 4):
+            elif (opcao == 4): # Consulta os livros feitos em Mari
                 livros = consultarMari()
-                if (livros != None):
+                if (livros != None): # Se a lista de livros não for None, retorna a lista
                     return livros
                 else:
                     return
@@ -46,15 +46,15 @@ class MenuBuscar:
     
     def consultarNome(self , nome):
         livro = Livro.object.get(nome==nome)
-        if (tipo == 1): # verifica se o vendedor que listar com qtd menor que 5
+        if (tipo == "operação_vendedor"): # verifica se o vendedor que listar com qtd menor que 5
             print("1) Filtrar por quantidade menor que 5")
             print("2) Não Filtrar")
             filtrar = input("-> ")
             
         if (livro.nome == nome):
-            if (tipo == 0): # Cliente
+            if (tipo == "operação_cliente"): 
                 return livro
-            elif (tipo == 1): # Vendedor        
+            elif (tipo == "operação_vendedor"):
                 if (filtrar == 1): # Filtrar = True
                     if (livro.quantidade_em_estoque <= 5): 
                         return livro
@@ -70,7 +70,7 @@ class MenuBuscar:
             return 0
             
     def consultarPreco(self, maior, menor):
-        if (tipo == 1): # Vendedor
+        if (tipo == "operação_vendedor"): 
             print("1) Filtrar por quantidade menor que 5")
             print("2) Não Filtrar")
             filtrar = input("-> ")
@@ -78,9 +78,9 @@ class MenuBuscar:
         preco = menor
         while (preco != maior):
             livro = Livro.object.get(preco)
-            if (tipo == 0): # Cliente
+            if (tipo == "operação_cliente"):
                 livros.append(livro)
-            elif (tipo == 1): # Vendedor
+            elif (tipo == "operação_vendedor"): 
                 if (filtrar == 1):
                     if (livro.quantidade_em_estoque <= 5): 
                         livros.append(livro)
@@ -95,21 +95,21 @@ class MenuBuscar:
         if (livros == none):
             print("não temos livros nessa faixa de valores\n")
             return
-        if (tipo > 3): # Não é cliente nem vendedor
+        if (tipo == "operação_busca"): # Não é cliente nem vendedor
             print(livros)
             return 
         return livros
     
     def consultarCategoria(self,categoria):
         livro = Livro.object.get(categoria==categoria)
-        if (tipo == 1): # Vendedor
+        if (tipo == "operação_vendedor"):
             print("1) Filtrar por quantidade menor que 5")
             print("2) Não Filtrar")
             filtrar = input("-> ")
         if (livro.categoria == categoria):
-            if (tipo == 0): # Cliente
+            if (tipo == "operação_cliente"): 
                 return livro
-            elif (tipo == 1): # Vendedor
+            elif (tipo == "operação_vendedor"): 
                 if (filtrar == 1):
                     if (livro.quantidade_em_estoque >= 5): 
                         return livro
@@ -124,15 +124,15 @@ class MenuBuscar:
             
     def ConsultarMari(self):
         livro = Livro.object.get(origem==local)
-        if (tipo == 1): # Vendedor
+        if (tipo == "operação_vendedor"): # Vendedor
             print("1) Filtrar por quantidade menor que 5")
             print("2) Não Filtrar")
             filtrar = input("-> ")
             
         if (livro.origem == local):
-            if (tipo == 0): # CLiente
+            if (tipo == "operação_cliente"): 
                 return livro
-            elif (tipo == 1): # Vendedor
+            elif (tipo == "operação_vendedor"):
                 if (filtrar == 1):
                     if (livro.quantidade_em_estoque >= 5): 
                         return livro
