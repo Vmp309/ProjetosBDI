@@ -31,7 +31,7 @@ class MenuOff:
             return
             
     
-    def exibir_login(self):
+    def exibir_login(self): # Caso o o login seja efetuado esse metodo deve mudar algum dos atributos: cliente/vendedor_fez_login para True 
         cliente = GerenciadorCliente()
         variavel_usuario_login = input("Digite o seu username: ")
         cliente.obter_Cliente(pk="variavel_usuario_login")

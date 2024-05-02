@@ -13,7 +13,8 @@ isSellerLogged = False
 
 while(True):
     if(isClientLogged): # Menu exibido quando o cliente estiver logado
-        pass
+        menu_cliente = MenuClient()
+        isClientLogged = menu_cliente.cliente_online
     elif(isSellerLogged): # Menu exibido quando o vendedor estiver logado
         menu_vendedor = MenuSeller()
     else: # Menu exibido quando o usuário não estiver logado
