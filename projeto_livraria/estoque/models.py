@@ -13,7 +13,7 @@ class Livro(models.Model):
         return self.titulo
     
 class Cliente(models.Model):
-    username = models.CharField(max_length=20, default='')
+    username = models.CharField(max_length=20, default='', primary_key=True)
     password = models.CharField(max_length=20, default='')
     nome = models.CharField(max_length=100)
     cpf =  models.CharField(max_length=11)
@@ -25,7 +25,7 @@ class Cliente(models.Model):
         return self.pk
     
 class Vendedor(models.Model):
-    username = models.CharField(max_length=20, default='')
+    username = models.CharField(max_length=20, default='',primary_key=True)
     password = models.CharField(max_length=20, default='')
     nome = models.CharField(max_length=100)
     cpf =  models.CharField(max_length=11)
