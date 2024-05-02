@@ -24,7 +24,7 @@ class MenuClient:
         elif(opcao == 3):
             pass # Efetua a edição dos dados do cliente
         elif(opcao == 4):
-            self.cliente_online = False # 
+            self.cliente_online = False # É utilizado para sair do menu cliente e ir para o Menu off
         else: 
             return
 
