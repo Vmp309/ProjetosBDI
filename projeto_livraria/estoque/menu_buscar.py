@@ -129,9 +129,9 @@ class MenuBuscar:
             filtrar = input("-> ")
             
         if (livro.origem == local):
-            if (tipo == "operação_cliente"): 
+            if (self.tipo == "operação_cliente"):
                 return livro
-            elif (tipo == "operação_vendedor"):
+            elif (self.tipo == "operação_vendedor"):
                 if (filtrar == 1):
                     if (livro.quantidade_em_estoque >= 5): 
                         return livro
