@@ -1,10 +1,11 @@
 from .models import Livros
 
 class MenuBuscar:
-    
+    tipo = None # Tipo = 
+
     def exibir_menu(self, tipo ):
-        
-            print( "           Consulta de livros")
+            self.tipo = tipo        
+            print("Consulta de livros")
             print("1) Pesquisar por Nome.")
             print("2) Pesquisar por Faixa de Preço")
             print("3) Pesquisar por Categoria")
@@ -42,15 +43,18 @@ class MenuBuscar:
                 return
     
     
-    def consultarNome(self ,nome):
+    def consultarNome(self , nome):
         livro = Livro.get(nome==nome)
+        if tipo == 1: # Tipo = 1
+            print("1) Filtrar por quantidade menor que 5")
+            print("2) Não Filtrar")
+            filtrar = input("-> ")
         if (livro.nome == nome):
             if tipo == 0:
                 return livro
-            elif tipo == 1:
-                filtrar=input("Digte 1 para filtar por quantidade menor que 5\nDitite 0 para não filtrar\n>")
-                if filtrar == 1
-                    if livro.quantidade_em_estoque =<5: 
+            elif tipo == 1:                
+                if filtrar == 1:
+                    if livro.quantidade_em_estoque <= 5: 
                         return livro
                 else:
                     return livro
