@@ -1,7 +1,8 @@
 from .models import Livros
 
 class MenuBuscar:
-    tipo = None # Tipo = 
+    tipo = None # Tipo = 0 cliente, Tipo = 1 vendedor, tipo = 3 compras
+    
 
     def exibir_menu(self, tipo ):
             self.tipo = tipo        
@@ -44,11 +45,12 @@ class MenuBuscar:
     
     
     def consultarNome(self , nome):
-        livro = Livro.get(nome==nome)
-        if tipo == 1: # Tipo = 1
+        livro = Livro.object.get(nome==nome)
+        if tipo == 1: # verifica se o vendedor que listar com qtd menor que 5
             print("1) Filtrar por quantidade menor que 5")
             print("2) Não Filtrar")
             filtrar = input("-> ")
+            
         if (livro.nome == nome):
             if tipo == 0:
                 return livro
@@ -62,7 +64,7 @@ class MenuBuscar:
                 print(livro)
                 return 
         else:
-            print("LIvro não encontrado")
+            print("Livro não encontrado")
             return 0
             
     def consultarPreco(self, maior , menor):
@@ -71,7 +73,7 @@ class MenuBuscar:
         livros=none
         preco = menor
         while maior !=menor
-            livros = Livro.get(preco)
+            livros = Livro.object.get(preco)
             if tipo == 0:
                 livros.append(livro)
             elif tipo == 1:
@@ -92,7 +94,7 @@ class MenuBuscar:
         return livros
     
     def consultarCategoria(self,categoria):
-        livro = Livro.get(categoria==categoria)
+        livro = Livro.object.get(categoria==categoria)
         if tipo == 1:
             filtrar=input("Digte 1 para filtar por quantidade menor que 5\nDitite 0 para não filtrar\n>)
         if livro.categoria==categoria:
@@ -105,14 +107,14 @@ class MenuBuscar:
                 else:
                     return livro
             else:
-                livro = Livro.get(titulo==nome)
+                livro = Livro.object.get(titulo==nome)
                 print(livro)
                 return
         else:
             print("Não temos livros dessa categoria")
             
     def ConsultarMari(self):
-        livro = Livro.get(origem==local)
+        livro = Livro.object.get(origem==local)
         if tipo == 1:
             filtrar=input("Digte 1 para filtar por quantidade menor que 5\nDitite 0 para não filtrar\n>)
             
@@ -126,7 +128,7 @@ class MenuBuscar:
                 else:
                     return livro
             else:
-                livro = Livro.get(titulo==nome)
+                livro = Livro.object.get(titulo==nome)
                 print(livro)
                 return
         else:
