@@ -120,7 +120,7 @@ class MenuBuscar:
         if tipo == 1:
             filtrar=input("Digte 1 para filtar por quantidade menor que 5\nDitite 0 para não filtrar\n>)
             
-        if livro.origem==local:
+        if livro.origem == local :
             if tipo == 0:
                 return livro
             elif tipo == 1:
@@ -129,6 +129,8 @@ class MenuBuscar:
                         return livro
                 else:
                     return livro
+            elif tipo == 3:
+                
             else:
                 livro = Livro.object.get(titulo==nome)
                 print(livro)
