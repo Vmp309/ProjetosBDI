@@ -23,6 +23,13 @@ classe MenuVenda:
         self.venda.removerIntem(self.venda.pk,livro)
         print("removendo",livro)
         
-    def pagamento(self,formaPagamento ):
+    def pagamento(self ):
+        print("Valor total da compra: ", self.venda.valorTotal)
+        print("Digite 0 para pagar com pix")
+        print("Digite 1 para pagar com cartão")
+        print("Digite 2 para pagar com beries")
+        print("Digite 3 para pagar com boleto")
+        formaPagamento = input(">")
         self.venda.pagamento(self.venda.pk,self.cliente.username, formaPagamento)
+        print("Pagamento concuido!")
         
