@@ -81,8 +81,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': BASE_DIR / 'postgres',
         'NAME': 'victoria', # Nome do banco de dados que você criou
-        'USER': 'victoria',     # Nome de usuário do PostgreSQL
-        'PASSWORD': 'victoria',   # Senha do PostgreSQL
+        'USER': 'augusto',     # Nome de usuário do PostgreSQL
+        'PASSWORD': 'augusto',   # Senha do PostgreSQL
         'HOST': 'localhost',      # Host onde o PostgreSQL está em execução (geralmente, localhost)
         'PORT': '5432',           # Porta padrão do PostgreSQL
     }
