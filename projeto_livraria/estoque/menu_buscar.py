@@ -18,16 +18,25 @@ class MenuBuscar:
             elif opcao == 1:
                 maior = input("Digite o maior preço\n>")
                 menor = input("Digite o menor preço\n>")
-                livro = consultarPreco
-                return livro
+                livro = consultarPreco(maior,menor)
+                if livros != none:
+                    return livros
+                else:
+                    return
                 
             elif opcao == 2:
                 categoria = input("Digite a Categoria\n>") 
                 livros = consultarCategoria(categoria)
-                return livros
+                if livros != none:
+                    return livros
+                else:
+                    return
             elif opcao == 3:
                 livros = consultarMari()
-                return livros
+                if livros != none:
+                    return livros
+                else:
+                    return
             else:
                 print("opção invalida!\n")
     
