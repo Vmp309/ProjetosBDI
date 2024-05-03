@@ -18,7 +18,8 @@ class MenuSeller:
         print("4) Fazer o Logout.")
         self.opcao = input("-> ")
         if self.opcao == "1":
-            pass
+            menu_busca = MenuBusca(self.gerenciador)
+            menu_busca.exibir_menu(tipo_operacao="busca_vendedor")
         elif self.opcao == "2":
             self.adicionar_livro()
         elif self.opcao == "3":

@@ -95,12 +95,24 @@ class MenuBusca:
             print("4) Buscar por Local onde o Livro foi produzido.")
             self.opcao = input("-> ")
             if self.opcao == "1":
-                self.pedir_titulo()
+                self.pedir_tituloFiltrado()
             elif self.opcao == "2":
-                self.pedir_faixa()
+                self.pedir_faixaFiltrado()
             elif self.opcao == "3":
-                self.pedir_categoria()
+                self.pedir_categoriaFiltrado()
             elif self.opcao == "4":
-                self.pedir_local()
+                self.pedir_localFiltrado()
             else:
                 print("Opção inválida")
+
+    def pedir_tituloFiltrado(self):
+        pass
+
+    def pedir_faixaFiltrado(self):
+        pass
+
+    def pedir_categoriaFiltrado(self):
+        pass
+
+    def pedir_localFiltrado(self):
+        pass

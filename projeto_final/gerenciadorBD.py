@@ -48,10 +48,11 @@ class GerenciadorBD:
 
     def buscar_faixa_preco_Livro(self, maior, menor):
         cursor = self.conexao.cursor()
-        cursor.execute("SELECT * FROM livro WHERE valor BETWEEN %f AND %f", (menor, maior))
+        cursor.execute("SELECT * FROM livro WHERE valor BETWEEN %s AND %s", (menor, maior))
         livros = []
-        for livro in cursor.fetchone():
-            livros.append(Livro(livro[0], livro[1], livro[2], livro[3], livro[4], livro[5], livro[6], livro[7]))
+        for row in cursor.fetchall():
+            livros.append(Livro(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]))
+        cursor.close()
         return livros
         
 
@@ -60,7 +61,7 @@ class GerenciadorBD:
         cursor = self.conexao.cursor()
         cursor.execute("SELECT * FROM livro WHERE categoria = %s", (categoria, ))
         livros = []
-        for livro in cursor.fetchone():
+        for livro in cursor.fetchall():
             livros.append(Livro(livro[0], livro[1], livro[2], livro[3], livro[4], livro[5], livro[6], livro[7]))
         return livros
 
@@ -68,9 +69,20 @@ class GerenciadorBD:
         cursor = self.conexao.cursor()
         cursor.execute("SELECT * FROM livro WHERE origem = %s", (origem, ))
         livros = []
-        for livro in cursor.fetchone():
+        for livro in cursor.fetchall():
             livros.append(Livro(livro[0], livro[1], livro[2], livro[3], livro[4], livro[5], livro[6], livro[7]))
         return livros
+
+
+    def buscar_tituloFiltrado_Livro(self, titulo):
+        cursor = self.conexao.cursor()
+        cursor.execute("SELECT * FROM livro WHERE titulo = %s AND quantidade < 5", (titulo,))
+        livro = cursor.fetchall()
+        cursor.close()
+        if livro:
+            return Livro(livro[0], livro[1], livro[2], livro[3], livro[4], livro[5], livro[6], livro[7])
+        else:
+            return None
 
 
 # Funções Vendedor
