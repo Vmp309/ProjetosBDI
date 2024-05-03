@@ -1,4 +1,5 @@
 from Client import Cliente
+from menu_busca import MenuBusca
 
 class MenuClient:
 
@@ -17,7 +18,7 @@ class MenuClient:
         print("4) Fazer o Logout.")
         self.opcao = input("-> ")
         if self.opcao == "1":
-            pass
+            menu_busca = MenuBusca(self.gerenciador, "busca_normal")
         elif self.opcao == "2":
             pass
         elif self.opcao == "3":

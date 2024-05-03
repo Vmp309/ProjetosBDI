@@ -1,5 +1,6 @@
 from Livro import Livro
 from Seller import Vendedor
+from menu_busca import MenuBusca
 
 class MenuSeller:
 

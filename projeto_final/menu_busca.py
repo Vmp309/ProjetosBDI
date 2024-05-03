@@ -9,7 +9,7 @@ class MenuBusca:
         if tipo_operacao == "busca_normal":
             self.exibir_buscaNormal()
         elif tipo_operacao == "busca_vendedor":
-            pass
+            self.exibir_buscaVendedor()
         elif tipo_operacao == "busca_venda":
             pass
 
@@ -69,7 +69,7 @@ class MenuBusca:
 
     def pedir_local(self):
         local = input("Digite o local onde o livro foi fabricado\n-> ")
-        livros = self.gerenciador.buscar_local_Livro(origem)
+        livros = self.gerenciador.buscar_local_Livro(local)
         if len(livros) == 0:
             print("Não há livros nesse local.")
         else:
@@ -83,9 +83,9 @@ class MenuBusca:
         print("1) Sim.")
         print("2) Não.")
         self.opcao2 = input("-> ")
-        if opcao2 == "2":
+        if self.opcao2 == "2":
             self.exibir_buscaNormal()
-        elif opcao2 == "1":
+        elif self.opcao2 == "1":
             print("------------------------------------------")
             print("Livros com menos de 5 unidades disponiveis")
             print("------------------------------------------\n")
@@ -106,13 +106,37 @@ class MenuBusca:
                 print("Opção inválida")
 
     def pedir_tituloFiltrado(self):
-        pass
+        titulo = input("Qual é o titulo do Livro? \n-> ")
+        livro = self.gerenciador.buscar_tituloFiltrado_Livro(titulo)
+        if livro == None:
+            print("Não há nenhum livro com esse título no catalogo")
+        else:
+            self.mostrar_livro(livro)
 
     def pedir_faixaFiltrado(self):
-        pass
+        menor = input("Digite o menor valor\n-> ")
+        maior = input("Digite o maior valor\n-> ")
+        livros = self.gerenciador.buscar_faixa_precoFiltrado_Livro(maior, menor)
+        if len(livros) == 0:
+            print("Não há nenhum livro com essa faixa de preço.")
+        else:
+            for livro in livros:
+                self.mostrar_livro(livro)
 
     def pedir_categoriaFiltrado(self):
-        pass
+        categoria = input("Digite a categoria\n-> ")
+        livros = self.gerenciador.buscar_categoriaFiltrado_Livro(categoria)
+        if len(livros) == 0:
+            print("Não há livros para essa categoria.")
+        else:
+            for livro in livros:
+                self.mostrar_livro(livro)
 
     def pedir_localFiltrado(self):
-        pass
+        local = input("Digite o local onde o livro foi fabricado\n-> ")
+        livros = self.gerenciador.buscar_localFiltrado_Livro(local)
+        if len(livros) == 0:
+            print("Não há livros nesse local.")
+        else:
+            for livro in livros:
+                self.mostrar_livro(livro)
