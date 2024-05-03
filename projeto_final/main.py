@@ -10,8 +10,8 @@ from Seller import Vendedor
 if __name__ == "__main__":
     conexao = psycopg2.connect(
         database="Reading_Merry",
-        user="matheus",
-        password="matheus23BD",
+        user="augusto",
+        password="123",
         host="localhost"
     )
 
