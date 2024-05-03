@@ -31,7 +31,7 @@ class MenuBusca:
             self.pedir_local()
 
     def mostrar_livro(self, livro):
-        print("ID: " + str(livro.id_livro))
+        print("\n\nID: " + str(livro.id_livro))
         print("Titulo: "+ livro.titulo)
         print("Autor: " + livro.autor)
         print("Fabricado em: " + livro.origem)

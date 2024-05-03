@@ -18,7 +18,8 @@ class MenuClient:
         print("4) Fazer o Logout.")
         self.opcao = input("-> ")
         if self.opcao == "1":
-            menu_busca = MenuBusca(self.gerenciador, "busca_normal")
+            menu_busca = MenuBusca(self.gerenciador)
+            menu_busca.exibir_menu(tipo_operacao="busca_normal")
         elif self.opcao == "2":
             pass # TODO fazer a funcionalidade de compra
         elif self.opcao == "3":
