@@ -1,7 +1,7 @@
 from Livro import Livro
 from Seller import Vendedor
 from menu_busca import MenuBusca
-
+import datetime
 class MenuSeller:
 
     def __init__(self, vendedor, gerenciador):
@@ -16,7 +16,8 @@ class MenuSeller:
         print("1) Buscar Livro.")
         print("2) Adicionar Livro.")
         print("3) Mostrar minhas informações. ")
-        print("4) Fazer o Logout.")
+        print("4) Gerar Relatorio")
+        print("5) Fazer o Logout.")
         self.opcao = input("-> ")
         if self.opcao == "1":
             menu_busca = MenuBusca(self.gerenciador)
@@ -26,6 +27,8 @@ class MenuSeller:
         elif self.opcao == "3":
             self.mostrar_info()
         elif self.opcao == "4":
+            self.gerar_relatorio()
+        elif self.opcao == "5":
             self.vendedor = Vendedor(cpf=None, username=None, password=None, nome=None)
             self.fez_logout = True
             print("\n\n\nVocê fez o logout com sucesso!\n")
@@ -59,3 +62,16 @@ class MenuSeller:
         print("Username: " + self.vendedor.username)
         print("Password: " + self.vendedor.password + "\n")
 
+    def gerar_relatorio(self):
+        data_atual = datetime.date.today()        
+        data_inicio = data_atual.replace(day=1)
+        data_fim = data_atual.replace(day=30)
+        
+        print("1) Gerar relatorio de vendas")
+        print("2) Gerar relatorio de livros")
+        opcao = input("-> ")
+        
+        if(opcao == 1):
+            self.gerenciador.relatorio_livros(data_inicio, data_fim)
+        elif(opcao == 2):
+            self.gerenciador.relatorio_vendas(data_inicio, data_fim)

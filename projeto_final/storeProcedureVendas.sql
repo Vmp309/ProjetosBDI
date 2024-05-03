@@ -17,17 +17,17 @@ BEGIN
 
   -- Selecione e agregue dados de vendas dentro do intervalo de datas especificado
   SELECT
-    SUM(valorTotal) AS totalVendas,
-    SUM(valorDesconto) AS descontoTotal,
-    SUM(valorTotal - valorDesconto) AS totalPago,
-    CASE WHEN formaPagamento = 'dinheiro' THEN SUM(valorTotal - valorDesconto) ELSE 0 END AS vendasDinheiro,
-    CASE WHEN formaPagamento = 'pix' THEN SUM(valorTotal - valorDesconto) ELSE 0 END AS vendasDinheiro,
-    CASE WHEN formaPagamento = 'debito' THEN SUM(valorTotal - valorDesconto) ELSE 0 END AS vendasCartaoDebito,
-    CASE WHEN formaPagamento = 'credito' THEN SUM(valorTotal - valorDesconto) ELSE 0 END AS vendasCartaoCredito,
-    CASE WHEN formaPagamento = 'berries' THEN SUM(valorTotal - valorDesconto) ELSE 0 END AS vendasBerries,
+    SUM(valor_total) AS totalVendas,
+    SUM(valor_desconto) AS descontoTotal,
+    SUM(valor_total - valor_desconto) AS totalPago,
+    CASE WHEN forma_pagamento = 'dinheiro' THEN SUM(valor_total - valor_desconto) ELSE 0 END AS vendasDinheiro,
+    CASE WHEN forma_pagamento = 'pix' THEN SUM(valor_total - valor_desconto) ELSE 0 END AS vendasDinheiro,
+    CASE WHEN forma_pagamento = 'debito' THEN SUM(valor_total - valor_desconto) ELSE 0 END AS vendasCartaoDebito,
+    CASE WHEN forma_pagamento = 'credito' THEN SUM(valor_total - valor_desconto) ELSE 0 END AS vendasCartaoCredito,
+    CASE WHEN forma_pagamento = 'berries' THEN SUM(valor_total - valor_desconto) ELSE 0 END AS vendasBerries,
     COUNT(*) AS VendasConcluidas
   FROM Venda
-  WHERE Pagconcluido = TRUE
+  WHERE pagamento_concluido = TRUE
     AND data_venda BETWEEN @dataInicio AND @dataFim;
 
   -- Atribuir valores agregados às variáveis

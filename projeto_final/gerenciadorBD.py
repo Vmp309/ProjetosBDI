@@ -240,3 +240,32 @@ class GerenciadorBD:
         cursor.execute("DELETE FROM %s", nome_tabela)
         self.conexao.commit()
         cursor.close()
+        
+# relatorios
+    def relatorio_livros(self,data_inicio, data_fim):
+        procedure = "gerar_relatorio_livros"
+        cursor = self.conexao.cursor()
+        # Prepare the stored procedure call with parameters
+        cursor.prepare(f"CALL {procedure}($1, $2)")
+
+        # Execute the stored procedure with parameters
+        cursor.execute("CALL gerar_relatorio_livros", (data_inicio, data_fim))
+        resultado = cursor.fetchall()
+        for linha in resultado:
+            # Processa cada linha do conjunto de resultados
+            print(linha)
+        
+        
+    def relatorio_vendas(self,data_inicio, data_fim):
+        procedure = "gerar_relatório_de_vendas"
+        cursor = self.conexao.cursor()
+        # Prepare a chamada de procedimento armazenado com parâmetros
+        cursor.prepare(f"CALL {procedure}($1, $2)")
+        # Execute o procedimento armazenado com parâmetros
+        cursor.execute("CALL gerar_relatório_de_vendas", (data_inicio, data_fim))
+        resultado = cursor.fetchall()
+        for linha in resultado:
+            # Processa cada linha do conjunto de resultados
+            print(linha)
+            
+            

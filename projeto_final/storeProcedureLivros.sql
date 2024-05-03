@@ -11,7 +11,7 @@ BEGIN
     --Selecionar e agregar dados do livro
     SELECT
         COUNT(*) AS totalLivros,
-        SUM(quantidade_em_estoque * valor) AS valorTotalEstoque,
+        SUM(quantidade * valor) AS valorTotalEstoque,
         autor,
         COUNT(*) AS total_livros_por_autor
     FROM Livro
