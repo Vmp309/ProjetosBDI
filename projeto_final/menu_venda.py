@@ -23,20 +23,41 @@ class MenuVenda():
             print("Acho que você digitou errado...")
 
     def exibir_menu2(self):
-        print("----- Vendedor :" + self.vendedor.username + "-----\n")
-        print("1) Adicionar livro no carrinho.")
-        print("2) Remover livro do carrinho.")
-        print("3) Comprar.")
-        print("4) Cancelar compra.")
-        self.opcao = input("-> ")
-        if self.opcao == "1":
-            pass
-        elif self.opcao == "2":
-            pass
-        elif self.opcao == "3":
-            pass
-        elif self.opcao == "4":
-            pass
+        while (True):
+            print("----- Vendedor: " + self.vendedor.username + "-----\n")
+            print("Carrinho: ")
+            for livro in self.carrinho:
+                self.mostrar_livro(livro)
+            print("1) Adicionar livro no carrinho.")
+            print("2) Remover livro do carrinho.")
+            print("3) Comprar.")
+            print("4) Cancelar compra.")
+            self.opcao = input("-> ")
+            if self.opcao == "1":
+                titulo = input("Digite o titulo do livro a ser adicionado ao carrinho.\n-> ")
+                self.adicionar_ao_carrinho(titulo)
+            elif self.opcao == "2":
+                pass
+            elif self.opcao == "3":
+                pass
+            elif self.opcao == "4":
+                pass
 
-        return
+        
 
+    def adicionar_ao_carrinho(self, titulo):
+        if self.gerenciador.buscar_titulo_Livro(titulo) == None:
+            print("Livro não encontrado!")
+            return
+        else:
+            self.carrinho.append(self.gerenciador.buscar_titulo_Livro(titulo))
+
+    def mostrar_livro(self, livro):
+        print("\nID: " + str(livro.id_livro))
+        print("Titulo: "+ livro.titulo)
+        print("Autor: " + livro.autor)
+        print("Fabricado em: " + livro.origem)
+        print("Categoria: " + livro.categoria)
+        print("Sinopse: "+ livro.sinopse)
+        print("Quantidade em Estoque: " + str(livro.quantidade))
+        print("Preço: " + str(livro.valor))

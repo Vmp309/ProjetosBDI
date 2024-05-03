@@ -163,12 +163,12 @@ class GerenciadorBD:
 
     def retornar_vendedor(self, username):
         cursor = self.conexao.cursor()
-        cursor.execute("SELECT * FROM vendedor WHERE username = %s", (login, ))
+        cursor.execute("SELECT * FROM vendedor WHERE username = %s", (username, ))
         linha_vendedor = cursor.fetchone()
         cursor.close()
         vendedor = Vendedor(cpf=linha_vendedor[0], username=linha_vendedor[1], password=linha_vendedor[2], nome=linha_vendedor[3])
         return vendedor
-
+    
     def mostrar_vendedores(self):
         cursor = self.conexao.cursor()
         cursor.execute("SELECT * FROM vendedor")
