@@ -10,6 +10,7 @@ class MenuVenda():
         self.carrinho = []
 
     def exibir_menu(self):
-        vendedores = self.gerenciador.mostrar_vendedores
+        vendedores = self.gerenciador.mostrar_vendedores()
         for vendedor in vendedores:
             self.gerenciador.mostrar_vendedor(vendedor)
+        input("Escolha o vendedor que deve concluir a venda.\n-> ")

@@ -168,12 +168,12 @@ class GerenciadorBD:
         cursor.execute("SELECT * FROM vendedor")
         lista = []
         for linha in cursor.fetchall():
-            lista.append(Vendedor(cpf=linha_vendedor[0], username=linha_vendedor[1], password=linha_vendedor[2], nome=linha_vendedor[3]))
+            lista.append(Vendedor(cpf=linha[0], username=linha[1], password=linha[2], nome=linha[3]))
         cursor.close()
         return lista
 
     def mostrar_vendedor(self, vendedor):
-        print("Nome: " + vendedor.nome)
+        print("\nNome do Vendedor: " + vendedor.nome)
         print("Username: " + vendedor.username)
 
 # Funções CLiente
