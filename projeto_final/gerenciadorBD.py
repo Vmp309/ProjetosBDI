@@ -8,7 +8,6 @@ class GerenciadorBD:
         self.conexao = conexao
 
 # Funções Livro
-
     def adicionar_livro(self, livro):
         cursor = self.conexao.cursor()
         cursor.execute("INSERT INTO livro (id_livro, titulo, autor, origem, categoria, sinopse, quantidade, valor) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)",
