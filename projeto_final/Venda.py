@@ -1,5 +1,5 @@
 class Venda:
-    def __init__(self, id_venda, cliente, vendedor, forma_pagamento, valor_total, valor_desconto, livros):
+    def __init__(self, id_venda, cliente, vendedor, forma_pagamento, valor_total, valor_desconto, livros, data):
         self.id_venda = id_venda
         self.cliente = cliente
         self.vendedor = vendedor
@@ -7,3 +7,4 @@ class Venda:
         self.valor_total = valor_total
         self.valor_desconto = valor_desconto
         self.livros = livros
+        self.data = data
