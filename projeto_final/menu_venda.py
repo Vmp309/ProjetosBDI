@@ -1,6 +1,8 @@
 from Client import Cliente
 from Seller import Vendedor
+from Venda import Venda
 from gerenciadorBD import GerenciadorBD
+import datetime
 
 class MenuVenda():
     
@@ -11,6 +13,8 @@ class MenuVenda():
         self.opcao = 0
         self.carrinho = []
         self.valor = 0
+        self.valor_com_desconto=0
+        self.venda = Venda(self.cliente,self.vendedor,forma_pagamento=None,valor_total=None,valor_desconto=None,livros=[],data=None) 
 
     def exibir_menu(self):
         vendedores = self.gerenciador.mostrar_vendedores()
@@ -38,21 +42,32 @@ class MenuVenda():
                 titulo = input("Digite o titulo do livro a ser adicionado ao carrinho.\n-> ")
                 self.adicionar_ao_carrinho(titulo)
             elif self.opcao == "2":
-                pass
+                self.remover_do_carrinho(titulo)
             elif self.opcao == "3":
-                pass
+                self.finalizar_compra()
             elif self.opcao == "4":
-                pass
+                return
 
         
 
     def adicionar_ao_carrinho(self, titulo):
-        if self.gerenciador.buscar_titulo_Livro(titulo) == None:
+        livro_atual= self.gerenciador.buscar_titulo_Livro(titulo)
+        if livro_atual == None:
             print("Livro não encontrado!")
             return
         else:
-            self.carrinho.append(self.gerenciador.buscar_titulo_Livro(titulo))
+            self.venda.livros.append(livro_atual.id_livro)
+            self.carrinho.append(livro_atual)
 
+    def remover_do_carrinho(self, titulo):
+        livro_atual= self.gerenciador.buscar_titulo_Livro(titulo)
+        if livro_atual == None:
+            print("Livro não encontrado!")
+            return
+        else:
+            self.venda.livros.remove(livro_atual.id_livro)
+
+    
     def mostrar_livro(self, livro):
         print("\nID: " + str(livro.id_livro))
         print("Titulo: "+ livro.titulo)
@@ -63,11 +78,27 @@ class MenuVenda():
         print("Quantidade em Estoque: " + str(livro.quantidade))
         print("Preço: " + str(livro.valor))
 
-
-    def finalizar_compra(self):
+    def desconto(self):
+        desconto=0.0
+        if (self.cliente.isFlamengo ):
+            desconto+=0.05
+        elif (self.cliente.isOnePieceFan) :
+            desconto+=0.05
+        elif (self.cliente.isSousa):
+            desconto+=0.05
+        self.venda.valor_total = self.valor
+        self.venda.valor_desconto = self.valor - (self.valor * 0.05)
+        
         for livro in self.carrinho:
             self.valor += livro.valor
-        print("Valor da compra: " + self.valor)
+        print("Valor da compra: " + str(self.valor))
+        if (desconto >= 0.0):
+            print("Valor com desconto: " + str(self.valor_com_desconto))
+
+    def finalizar_compra(self):
+
+        self.desconto()
+
         print("Defina a forma de pagamento: ")
         print("1) Cartão.")
         print("2) Boleto.")
@@ -76,11 +107,21 @@ class MenuVenda():
         form_pagamento = input("-> ")
         if form_pagamento == "1":
             form_pagamento = "Cartão"
+            print("Pagando com o Cartão")
         elif form_pagamento == "2":
             form_pagamento = "Boleto"
+            print("Pagando com Boleto")
         elif form_pagamento == "3":
             form_pagamento = "Pix"
+            print("Pagando com Pix")
         elif form_pagamento == "4":
             form_pagamento = "Berries"
+            print("Pagando com Berries")
+        self.venda.forma_pagamento = form_pagamento
+        self.venda.pagamento_concluido = True
+        self.venda.data = datetime.date.today() 
+        self.gerenciador.adicionar_venda(self.venda)
         
 
+
+    

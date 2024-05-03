@@ -1,6 +1,6 @@
 class Venda:
-    def __init__(self, id_venda, cliente, vendedor, forma_pagamento, valor_total, valor_desconto, livros, data):
-        self.id_venda = id_venda
+    def __init__(self, cliente, vendedor, forma_pagamento, valor_total, valor_desconto, livros, data):
+        #self.id_venda = id_venda
         self.cliente = cliente
         self.vendedor = vendedor
         self.forma_pagamento = forma_pagamento
