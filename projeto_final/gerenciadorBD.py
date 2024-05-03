@@ -108,6 +108,7 @@ class GerenciadorBD:
         livros = []
         for livro in cursor.fetchall():
             livros.append(Livro(livro[0], livro[1], livro[2], livro[3], livro[4], livro[5], livro[6], livro[7]))
+        cursor.close()
         return livros
 # Funções Vendedor
 
@@ -161,6 +162,19 @@ class GerenciadorBD:
         vendedor = Vendedor(cpf=linha_vendedor[0], username=linha_vendedor[1], password=linha_vendedor[2], nome=linha_vendedor[3])
         return vendedor
 
+
+    def mostrar_vendedores(self):
+        cursor = self.conexao.cursor()
+        cursor.execute("SELECT * FROM vendedor")
+        lista = []
+        for linha in cursor.fetchall():
+            lista.append(Vendedor(cpf=linha_vendedor[0], username=linha_vendedor[1], password=linha_vendedor[2], nome=linha_vendedor[3]))
+        cursor.close()
+        return lista
+
+    def mostrar_vendedor(self, vendedor):
+        print("Nome: " + vendedor.nome)
+        print("Username: " + vendedor.username)
 
 # Funções CLiente
     def adicionar_cliente(self, cliente):

@@ -1,5 +1,6 @@
 from Client import Cliente
 from menu_busca import MenuBusca
+from menu_venda import MenuVenda
 
 class MenuClient:
 
@@ -21,7 +22,8 @@ class MenuClient:
             menu_busca = MenuBusca(self.gerenciador)
             menu_busca.exibir_menu(tipo_operacao="busca_normal")
         elif self.opcao == "2":
-            pass # TODO fazer a funcionalidade de compra
+            menu_venda = MenuVenda(self.gerenciador, self.cliente)
+            menu_venda.exibir_menu()
         elif self.opcao == "3":
             self.mostrar_info()
         elif self.opcao == "4":
@@ -45,4 +47,4 @@ class MenuClient:
         print("Password: " + self.cliente.password + "\n")
         print("Torce para o Flamengo: " + str(self.cliente.isFlamengo))
         print("É fã de One Piece: " + str(self.cliente.isOnePieceFan))
-        
+              
