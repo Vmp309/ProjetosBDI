@@ -20,7 +20,7 @@ class MenuClient:
         if self.opcao == "1":
             menu_busca = MenuBusca(self.gerenciador, "busca_normal")
         elif self.opcao == "2":
-            pass
+            pass # TODO fazer a funcionalidade de compra
         elif self.opcao == "3":
             self.mostrar_info()
         elif self.opcao == "4":
