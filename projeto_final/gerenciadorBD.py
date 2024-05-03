@@ -57,10 +57,20 @@ class GerenciadorBD:
 
 
     def buscar_categoria_Livro(self, categoria):
-        pass
+        cursor = self.conexao.cursor()
+        cursor.execute("SELECT * FROM livro WHERE categoria = %s", (categoria, ))
+        livros = []
+        for livro in cursor.fetchone():
+            livros.append(Livro(livro[0], livro[1], livro[2], livro[3], livro[4], livro[5], livro[6], livro[7]))
+        return livros
 
     def buscar_local_Livro(self, origem):
-        pass
+        cursor = self.conexao.cursor()
+        cursor.execute("SELECT * FROM livro WHERE origem = %s", (origem, ))
+        livros = []
+        for livro in cursor.fetchone():
+            livros.append(Livro(livro[0], livro[1], livro[2], livro[3], livro[4], livro[5], livro[6], livro[7]))
+        return livros
 
 
 # Funções Vendedor
