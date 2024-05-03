@@ -161,7 +161,14 @@ class GerenciadorBD:
         vendedor = Vendedor(cpf=linha_vendedor[0], username=linha_vendedor[1], password=linha_vendedor[2], nome=linha_vendedor[3])
         return vendedor
 
-
+    def retornar_vendedor(self, username):
+        cursor = self.conexao.cursor()
+        cursor.execute("SELECT * FROM vendedor WHERE username = %s", (username, ))
+        linha_vendedor = cursor.fetchone()
+        cursor.close()
+        vendedor = Vendedor(cpf=linha_vendedor[0], username=linha_vendedor[1], password=linha_vendedor[2], nome=linha_vendedor[3])
+        return vendedor
+    
     def mostrar_vendedores(self):
         cursor = self.conexao.cursor()
         cursor.execute("SELECT * FROM vendedor")
@@ -224,8 +231,6 @@ class GerenciadorBD:
         cursor.close()
         cliente = Cliente(cpf=linha_cliente[0], username=linha_cliente[1], password=linha_cliente[2], nome=linha_cliente[3],isFlamengo=linha_cliente[4], isOnePieceFan=linha_cliente[5], isSousa=linha_cliente[6], endereco=linha_cliente[7])
         return cliente
-
-
 
 
 # Utilidades
