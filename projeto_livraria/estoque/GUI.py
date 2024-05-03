@@ -13,7 +13,7 @@ while True:
         menu_vendedor = MenuSeller()
         isSellerLogged = menu_vendedor.vendedor_online
     else:  # Menu exibido quando o usuário não estiver logado
-        menu_off = MenuOff()
-        menu_off.exibir_menu()
+        menu_offile = MenuOff()
+        menu_offile.exibir_menu()
         isClientLogged = menu_off.cliente_fez_login  # Se o cliente tiver efetuado o login, a próxima iteração chamará o menu do cliente
         isSellerLogged = menu_off.vendedor_fez_login  # Se o vendedor tiver efetuado o login, a próxima iteração chamará o menu do vendedor

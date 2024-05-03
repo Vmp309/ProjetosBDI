@@ -41,7 +41,7 @@ class Venda(models.Model):
     valorTotal = models.PositiveIntegerField()
     valorDesconto = models.PositiveIntegerField()
     formaPagamento = models.CharField(max_length=7)
-    Pagconcluido = models.BooleanField()
+    pagConcluido = models.BooleanField()
     cliente = models.ManyToManyField(Cliente)
     livros = models.ExpressionList({})
     vendedor = models.ManyToManyField(Vendedor)
