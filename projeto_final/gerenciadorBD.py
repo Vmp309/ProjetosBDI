@@ -259,13 +259,10 @@ class GerenciadorBD:
     def relatorio_vendas(self,data_inicio, data_fim):
         procedure = "gerar_relatório_de_vendas"
         cursor = self.conexao.cursor()
-        
         # Prepare a chamada de procedimento armazenado com parâmetros
         cursor.prepare(f"CALL {procedure}($1, $2)")
-
         # Execute o procedimento armazenado com parâmetros
         cursor.execute("CALL gerar_relatório_de_vendas", (data_inicio, data_fim))
-        
         resultado = cursor.fetchall()
         for linha in resultado:
             # Processa cada linha do conjunto de resultados

@@ -2,7 +2,6 @@ from Livro import Livro
 from Seller import Vendedor
 from menu_busca import MenuBusca
 import datetime
-
 class MenuSeller:
 
     def __init__(self, vendedor, gerenciador):
@@ -64,9 +63,8 @@ class MenuSeller:
         print("Password: " + self.vendedor.password + "\n")
 
     def gerar_relatorio(self):
-        data_atual = datetime.date.today()
-        current_month = current_date.month
-        data_inicio = data_atual.replace(day=01)
+        data_atual = datetime.date.today()        
+        data_inicio = data_atual.replace(day=1)
         data_fim = data_atual.replace(day=30)
         
         print("1) Gerar relatorio de vendas")
