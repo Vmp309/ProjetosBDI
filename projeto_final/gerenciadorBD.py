@@ -235,8 +235,8 @@ class GerenciadorBD:
 
     def adicionar_venda(self, venda):
         cursor = self.conexao.cursor()
-        cursor.execute("INSERT INTO venda (id_venda, cliente, vendedor, forma_pagamento, valor_total, valor_desconto, pagamento_concluido, livros) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"),
-        (venda.id_venda, venda.cliente, venda.vendedor, venda.forma_pagamento, venda.valor_total, venda.valor_desconto, venda.pagamento_concluido, venda.livros)
+        cursor.execute("INSERT INTO venda (cliente, vendedor, forma_pagamento, valor_total, valor_desconto, pagamento_concluido, livros) VALUES (%s,%s,%s,%s,%s,%s,%s)"),
+        (venda.cliente, venda.vendedor, venda.forma_pagamento, venda.valor_total, venda.valor_desconto, venda.pagamento_concluido, venda.livros)
         self.conexao.commit()
         cursor.close()
 
