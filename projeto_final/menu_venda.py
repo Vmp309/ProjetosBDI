@@ -10,6 +10,7 @@ class MenuVenda():
         self.vendedor = Vendedor(cpf=None, username=None, password=None, nome=None)
         self.opcao = 0
         self.carrinho = []
+        self.valor = 0
 
     def exibir_menu(self):
         vendedores = self.gerenciador.mostrar_vendedores()
@@ -61,3 +62,25 @@ class MenuVenda():
         print("Sinopse: "+ livro.sinopse)
         print("Quantidade em Estoque: " + str(livro.quantidade))
         print("Preço: " + str(livro.valor))
+
+
+    def finalizar_compra(self):
+        for livro in self.carrinho:
+            self.valor += livro.valor
+        print("Valor da compra: " + self.valor)
+        print("Defina a forma de pagamento: ")
+        print("1) Cartão.")
+        print("2) Boleto.")
+        print("3) Pix.")
+        print("4) Berries.")
+        form_pagamento = input("-> ")
+        if form_pagamento == "1":
+            form_pagamento = "Cartão"
+        elif form_pagamento == "2":
+            form_pagamento = "Boleto"
+        elif form_pagamento == "3":
+            form_pagamento = "Pix"
+        elif form_pagamento == "4":
+            form_pagamento = "Berries"
+        
+
